@@ -2,12 +2,41 @@
 const inquirer = require("inquirer");
 const fetch = require("node-fetch");
 const wunderbar = require("@gribnoysup/wunderbar");
+const nconf = require("nconf");
 
+nconf.use("file", { file: "./config.json" });
+nconf.load();
+
+const uniMap = {
+  uio: 1110,
+  ntnu: 1150,
+  uib: 1120,
+};
+
+// Handle flags
+if (process.argv[2]) {
+  const arr = process.argv[2].split("=");
+  if (arr[0] !== "--set-uni") {
+    console.log("Error. Only flag --set-uni is supported.");
+    console.log("karakter --set-uni=ntnu to set ntnu as the default");
+  } else {
+    const uni = arr[1];
+    const code = uniMap[`${uni}`];
+    if (code) {
+      console.log(`${uni} is now set as the default university.`);
+      nconf.set("uni", code);
+      nconf.save();
+    } else {
+      console.log("Error. Only uio, ntnu or uib is available");
+    }
+  }
+}
+
+// Print graph
 const printData = (plot) => {
   const { chart, legend, scale, __raw } = wunderbar(plot, {
     min: 0,
     length: 42,
-    randomColorOptions: {},
     format: "0a",
   });
 
@@ -81,6 +110,7 @@ inquirer
   ])
   .then(async ({ emnekode, year }) => {
     // Edit payload with the provided input
+    payload.filter[0].selection.values = [`${nconf.get("uni")}`];
     payload.filter[1].selection.values = [`${emnekode.replace(/\s/g, "")}-1`];
     payload.filter[2].selection.values = [`${year}`];
 

@@ -2,7 +2,7 @@
 
 CLI for grade statistics at norwegian universities
 
-![Demo](assets/new.png)
+![Demo](assets/demo.png)
 
 ## Installation
 
@@ -16,10 +16,10 @@ Or install it globally:\
 
 Just type `karakter` in your shell (if installed globally), the program will prompt you for input
 
-The default university is UiO. You can change this default by running with --uni= FLAG/setting option:\
-`karakter --uni=ntnu`
+The default university is UiO. You can change this default by running with the `--set-uni` option once:\
+`karakter --set-uni=ntnu`
 
-List of universities currently supported:
+Universities currently supported:
 
 - uio
 - ntnu
