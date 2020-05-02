@@ -1,6 +1,6 @@
 {
   "name": "karakter",
-  "version": "1.0.0",
+  "version": "1.0.11",
   "description": "CLI for grade statistics at norwegian universities",
   "main": "src/index.js",
   "bin": "src/index.js",
@@ -13,6 +13,9 @@
   ],
   "author": "Herman Nygaard",
   "license": "MIT",
+  "files": [
+    "config.json"
+  ],
   "dependencies": {
     "@gribnoysup/wunderbar": "^2.2.2",
     "inquirer": "^7.1.0",

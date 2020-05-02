@@ -4,7 +4,8 @@ const fetch = require("node-fetch");
 const wunderbar = require("@gribnoysup/wunderbar");
 const nconf = require("nconf");
 
-nconf.use("file", { file: "./config.json" });
+nconf.use("file", { file: "config.json" });
+let uni = nconf.get("uni") || 1110;
 nconf.load();
 
 const uniMap = {
@@ -20,11 +21,12 @@ if (process.argv[2]) {
     console.log("Error. Only flag --set-uni is supported.");
     console.log("karakter --set-uni=ntnu to set ntnu as the default");
   } else {
-    const uni = arr[1];
-    const code = uniMap[`${uni}`];
+    const name = arr[1];
+    const code = uniMap[`${name}`];
     if (code) {
-      console.log(`${uni} is now set as the default university.`);
+      console.log(`${name} is now set as the default university.`);
       nconf.set("uni", code);
+      uni = code;
       nconf.save();
     } else {
       console.log("Error. Only uio, ntnu or uib is available");
@@ -110,10 +112,9 @@ inquirer
   ])
   .then(async ({ emnekode, year }) => {
     // Edit payload with the provided input
-    payload.filter[0].selection.values = [`${nconf.get("uni")}`];
+    payload.filter[0].selection.values = [`${uni}`];
     payload.filter[1].selection.values = [`${emnekode.replace(/\s/g, "")}-1`];
     payload.filter[2].selection.values = [`${year}`];
-
     let data;
     try {
       const res = await fetch(url, {
