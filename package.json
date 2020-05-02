@@ -1,0 +1,27 @@
+{
+  "name": "karakter",
+  "version": "1.0.1",
+  "description": "CLI for grade statistics at norwegian universities",
+  "main": "src/index.js",
+  "bin": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "karakterweb",
+    "karakter"
+  ],
+  "author": "Herman Nygaard",
+  "license": "MIT",
+  "dependencies": {
+    "@gribnoysup/wunderbar": "^2.2.2",
+    "inquirer": "^7.1.0",
+    "node-fetch": "^2.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HermanNygaard/Karakterweb-CLI"
+  },
+  "homepage": "https://karakterweb.no"
+}
