@@ -30,4 +30,5 @@ Open a pull request/issue or contact if you want an institution added
 ## Data
 
 Data from [NSD](https://nsd.no)\
-[API license](https://www.data.norge.no/nlod/no/2.0)
+[API license](https://data.norge.no/nlod/no/2.0)
+
