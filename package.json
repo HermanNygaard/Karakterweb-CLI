@@ -19,7 +19,7 @@
   "dependencies": {
     "@gribnoysup/wunderbar": "^2.2.2",
     "inquirer": "^7.1.0",
-    "nconf": "^0.10.0",
+    "nconf": "^0.11.4",
     "node-fetch": "^2.6.0"
   },
   "repository": {
